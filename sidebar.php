@@ -154,11 +154,11 @@ if($_SESSION['login_lvl']=='admin' )
     <div class="bd-blockcontent"><p><span style="font-weight: bold;">Berita Terbaru</span></p>
         <br>
         <?php $query = "SELECT * FROM berita"; ?>
-        <?php $result = mysql_query($query); ?>
-        <?php if (mysql_num_rows($result) > 0): ?>
+        <?php $result = mysqli_query($koneksi, $query); ?>
+        <?php if (mysqli_num_rows($result) > 0): ?>
             <p>
             <marquee direction="up" scrollamount="2">    
-                <?php while ($r = mysql_fetch_array($result)): ?>
+                <?php while ($r = mysqli_fetch_array($result)): ?>
                     <b><?php echo $r['judul']; ?></b><br><?php echo $r['teks']; ?><br><?php echo date('d-m-Y H:i:s', strtotime($r['tanggal'])); ?>
                     <hr>
                 <?php endwhile; ?>

@@ -45,8 +45,8 @@
                                                     </tr>
                                                     <?php foreach ($cart as $key => $value): ?>
                                                         <?php $queryM = "SELECT nama_material,harga FROM material WHERE idmaterial='$key'"; ?>
-                                                        <?php $resultM = mysql_query($queryM); ?>
-                                                        <?php $rm = mysql_fetch_array($resultM); ?>
+                                                        <?php $resultM = mysqli_query($koneksi, $queryM); ?>
+                                                        <?php $rm = mysqli_fetch_array($resultM); ?>
                                                         <?php $jum = $value; ?>
                                                         <?php
                                                         $nama = $rm['nama_material'];

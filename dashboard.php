@@ -1,9 +1,9 @@
 <?php
-$ttl = mysql_query("SELECT SUM(jumlah) FROM donasi where status='ok'  ");
-$ttl1 = mysql_fetch_row($ttl);
+$ttl = mysqli_query($koneksi, "SELECT SUM(jumlah) FROM donasi where status='ok'  ");
+$ttl1 = mysqli_fetch_row($ttl);
 
-$ttl11 = mysql_query("SELECT SUM(total_harga) FROM rab_isi   ");
-$ttl2 = mysql_fetch_row($ttl11);
+$ttl11 = mysqli_query($koneksi, "SELECT SUM(total_harga) FROM rab_isi   ");
+$ttl2 = mysqli_fetch_row($ttl11);
 
 $dns = $ttl1[0];
 $tk = $ttl2[0];
@@ -38,8 +38,8 @@ $kr = $tk-$dns;
 						<?php 
 					/*	include "../../koneksi.php";
 						
-						$ttl = mysql_query("SELECT SUM(jumlah) FROM donasi where status='ok'  ");
-						$ttl1 = mysql_fetch_row($ttl);
+						$ttl = mysqli_query($koneksi, "SELECT SUM(jumlah) FROM donasi where status='ok'  ");
+						$ttl1 = mysqli_fetch_row($ttl);
 						
 						$sql   = "SELECT *  FROM browser";
 						$query = mysqli_query( $con, $sql )  or die(mysqli_error());
@@ -47,7 +47,7 @@ $kr = $tk-$dns;
 						{
 							$trendbrowser=$temp['browsername'];                     
 							$sql_total   = "SELECT total FROM browser WHERE browsername='$trendbrowser'";        
-							$query_total = mysqli_query($con,$sql_total ) or die(mysql_error());
+							$query_total = mysqli_query($con,$sql_total ) or die(mysqli_error($con));
 							while( $data = mysqli_fetch_array( $query_total ) )
 							{
 								$total = $data['total'];                 
@@ -90,9 +90,9 @@ $kr = $tk-$dns;
   <td>
   <marquee direction="up" scrollamount="2"> 
   <?php
-  $d= mysql_query("select * from donasi where status='ok' ");
+  $d= mysqli_query($koneksi, "select * from donasi where status='ok' ");
 $no=0;
-	while($don = mysql_fetch_row($d))
+	while($don = mysqli_fetch_row($d))
 	{
 		$no++;
 	$id_d = $don[0];
@@ -100,11 +100,11 @@ $no=0;
 	$jml1 = $don[2];
 	$jml = number_format($jml1, 0, ',', '.');
 	
-	$u = mysql_query("select * from user where iduser='".$nm1."'  ");
-	$us = mysql_fetch_row($u);
+	$u = mysqli_query($koneksi, "select * from user where iduser='".$nm1."'  ");
+	$us = mysqli_fetch_row($u);
 	
-	$k = mysql_query("select * from konfirmasi where id_donasi='".$id_d."'  ");
-	$ko = mysql_fetch_row($k);
+	$k = mysqli_query($koneksi, "select * from konfirmasi where id_donasi='".$id_d."'  ");
+	$ko = mysqli_fetch_row($k);
 	
 	$nm = $us[3];
 	$tgl = $ko[1];

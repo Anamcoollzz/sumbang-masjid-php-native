@@ -7,9 +7,9 @@
  </tr>
  <?php
  include 'koneksi.php';
- $d= mysql_query("select * from donasi where status='ok' ");
+ $d= mysqli_query($koneksi, "select * from donasi where status='ok' ");
 $no=0;
-	while($don = mysql_fetch_row($d))
+	while($don = mysqli_fetch_row($d))
 	{
 		$no++;
 	$id_d = $don[0];
@@ -17,11 +17,11 @@ $no=0;
 	$jml1 = $don[2];
 	$jml = number_format($jml1, 0, ',', '.');
 	
-	$u = mysql_query("select * from user where iduser='".$nm1."'  ");
-	$us = mysql_fetch_row($u);
+	$u = mysqli_query($koneksi, "select * from user where iduser='".$nm1."'  ");
+	$us = mysqli_fetch_row($u);
 	
-	$k = mysql_query("select * from konfirmasi where id_donasi='".$id_d."'  ");
-	$ko = mysql_fetch_row($k);
+	$k = mysqli_query($koneksi, "select * from konfirmasi where id_donasi='".$id_d."'  ");
+	$ko = mysqli_fetch_row($k);
 	
 	$nm = $us[3];
 	$tgl = $ko[1];

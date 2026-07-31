@@ -23,7 +23,7 @@
 		}
 		
 	
-			mysql_query("INSERT INTO donasi values (0,'$idu','$jml','$bank','pending')");
+			mysqli_query($koneksi, "INSERT INTO donasi values (0,'$idu','$jml','$bank','pending')");
 			
 
 		/*echo "<script>

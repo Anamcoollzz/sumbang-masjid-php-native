@@ -2,14 +2,14 @@
 session_start();
 include 'koneksi.php';
 
-$username = mysql_real_escape_string($_POST['username']);
-$password = mysql_real_escape_string($_POST['password']);
-$encpass = mysql_real_escape_string(($password));
+$username = mysqli_real_escape_string($koneksi, $_POST['username']);
+$password = mysqli_real_escape_string($koneksi, $_POST['password']);
+$encpass = mysqli_real_escape_string($koneksi, ($password));
 
 $query = "SELECT * FROM user WHERE username='$username' AND password='$encpass' LIMIT 1;";
-$result = mysql_query($query);
-$row = mysql_fetch_array($result);
-if(mysql_num_rows($result) > 0){
+$result = mysqli_query($koneksi, $query);
+$row = mysqli_fetch_array($result);
+if(mysqli_num_rows($result) > 0){
 	$lvl = $row[6];
 	
 	
@@ -36,7 +36,7 @@ if(mysql_num_rows($result) > 0){
 	
 	
 	
-    //$row = mysql_fetch_array($result);
+    //$row = mysqli_fetch_array($result);
 	$_SESSION['login_lvl'] = 'user';
     $_SESSION['login'] = array(
         'status' => TRUE,

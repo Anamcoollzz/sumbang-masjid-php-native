@@ -12,8 +12,8 @@
  <select name="sub" required>
 <option value="">Select</option>
 <?php
-$tg_l = mysql_query("select * from rab_sub order by id_rs ASC  ");
-while($tg_l1 = mysql_fetch_row($tg_l))
+$tg_l = mysqli_query($koneksi, "select * from rab_sub order by id_rs ASC  ");
+while($tg_l1 = mysqli_fetch_row($tg_l))
 {
 	$tg_id = $tg_l1[0];
 	$tg_n = $tg_l1[1];
@@ -108,7 +108,7 @@ $spesifik = $_POST['spesifik'];
 $ket = $_POST['ket'];
 $total = $volume*$harga;
 	
-			mysql_query("INSERT INTO rab_isi values (0, '$sub','$kerja','$satuan','$volume','$harga','$total','$spesifik','$ket')");
+			mysqli_query($koneksi, "INSERT INTO rab_isi values (0, '$sub','$kerja','$satuan','$volume','$harga','$total','$spesifik','$ket')");
 			
 	
 	print("<META HTTP-EQUIV = 'Refresh' Content = '0; URL =haladmin.php?p=rab_l'>");	

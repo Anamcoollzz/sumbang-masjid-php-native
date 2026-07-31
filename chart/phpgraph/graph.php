@@ -40,7 +40,7 @@
 						{
 							$trendbrowser=$temp['browsername'];                     
 							$sql_total   = "SELECT total FROM browser WHERE browsername='$trendbrowser'";        
-							$query_total = mysqli_query($con,$sql_total ) or die(mysql_error());
+							$query_total = mysqli_query($con,$sql_total ) or die(mysqli_error($con));
 							while( $data = mysqli_fetch_array( $query_total ) )
 							{
 								$total = $data['total'];                 

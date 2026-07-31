@@ -62,7 +62,7 @@
 	$psw = $_POST['psw'];
 
 	
-			mysql_query("INSERT INTO user values (0,'$usr','$psw','$nm','$email','$tlp','admin')");
+			mysqli_query($koneksi, "INSERT INTO user values (0,'$usr','$psw','$nm','$email','$tlp','admin')");
 			
 	echo "<script>
                 alert('Data Admin berhasil disimpan');

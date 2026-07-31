@@ -28,9 +28,9 @@
                                     <table width="100%" align="center">
 		<tr>
 		<?php
-		$f= mysql_query("select * from galeri_foto where status='aktif' ");
+		$f= mysqli_query($koneksi, "select * from galeri_foto where status='aktif' ");
 		$i = 1;
-		while($row = mysql_fetch_array($f)){
+		while($row = mysqli_fetch_array($f)){
 		?>
 			<td><?php echo $row['deskripsi'];?><br/>
 				<div class="bd-layout-cell" style="width: 20%" >

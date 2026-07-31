@@ -3,14 +3,13 @@
 <h1><center>Komentar Anda </center> </h1>
 <?php
 //membuat koneksi ke database
-$conn=mysql_connect("localhost", "", "root");
-mysql_select_db("masjiddb");
+$conn = mysqli_connect("localhost", "root", "root", "masjiddb");
 //membuat query select
 $sql="select * from pesan";
 //membaca data
-$hasil=mysql_query($sql);
+$hasil=mysqli_query($conn, $sql);
 //menampilkan data
-while($row=mysql_fetch_array($hasil)){
+while($row=mysqli_fetch_array($hasil)){
 //menampilkan field nama
 echo "Nama : ".$row['nama']; 
 //menampilkan field email

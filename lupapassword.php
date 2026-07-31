@@ -68,9 +68,9 @@ if ($p==1)
 	
 	$email = $_POST['email'];
 	
-$tg_l = mysql_query("select * from user where email='".$email."' ");
-$tg_l1 = mysql_fetch_row($tg_l);
-$cek = mysql_num_rows($tg_l);	
+$tg_l = mysqli_query($koneksi, "select * from user where email='".$email."' ");
+$tg_l1 = mysqli_fetch_row($tg_l);
+$cek = mysqli_num_rows($tg_l);	
 			if($cek >= 1)
 		{
 			$_SESSION["cekid"] = $tg_l1[0];
@@ -141,7 +141,7 @@ else if ($p==2)
 	$email = $_POST['email'];
 	$pswb= $_POST['pswbaru'];
 	
-mysql_query("UPDATE user set password='".$pswb."' where iduser='".$cekid."' and email='".$email."'");
+mysqli_query($koneksi, "UPDATE user set password='".$pswb."' where iduser='".$cekid."' and email='".$email."'");
 			unset($_SESSION['cekid']);
 			unset($_SESSION['cekemail']);
 	echo "<script>

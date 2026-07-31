@@ -8,7 +8,7 @@
 	//$act=$_GET['act'];
 	$id=$_GET['id'];
 	
-	mysql_query("DELETE FROM berita WHERE idberita='".$id."'");
+	mysqli_query($koneksi, "DELETE FROM berita WHERE idberita='".$id."'");
 	
 	
 	

@@ -42,7 +42,7 @@
 		$jml= str_replace(".", "", $jml1);
 		
 	
-			mysql_query("INSERT INTO donasi values (0,'$idu','$jml','pending')");
+			mysqli_query($koneksi, "INSERT INTO donasi values (0,'$idu','$jml','pending')");
 			
 
 		echo "<script>

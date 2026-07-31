@@ -2,9 +2,9 @@
 <br /><br />
   <?php
   $id_user = $_SESSION['login']['id_user'];
-$tg_l = mysql_query("select * from donasi where id_user='".$id_user."' and status='pending'  ");
-$tg_l1 = mysql_fetch_row($tg_l);
-$cek = mysql_num_rows($tg_l);
+$tg_l = mysqli_query($koneksi, "select * from donasi where id_user='".$id_user."' and status='pending'  ");
+$tg_l1 = mysqli_fetch_row($tg_l);
+$cek = mysqli_num_rows($tg_l);
 	$tg_id = $tg_l1[0];
 	$tg_n1 = $tg_l1[2];
 	$tg_n = number_format($tg_n1, 0, ',', '.');
@@ -97,11 +97,11 @@ $cek = mysql_num_rows($tg_l);
 		$filename = md5(uniqid()) . '.' .$imageFileType;
 		$target_file = $target_dir . $filename;
 	
-			mysql_query("INSERT INTO konfirmasi values (0,'$today','$iddonasi','$email','$tlp','$filename')");
-			mysql_query("UPDATE donasi SET status='menunggu' where id_donasi='".$iddonasi."'");
+			mysqli_query($koneksi, "INSERT INTO konfirmasi values (0,'$today','$iddonasi','$email','$tlp','$filename')");
+			mysqli_query($koneksi, "UPDATE donasi SET status='menunggu' where id_donasi='".$iddonasi."'");
 
 				
-    if (mysql_affected_rows() > 0) {
+    if (mysqli_affected_rows($koneksi) > 0) {
 		move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file);
 		echo "<script>
                 alert('Konfirmasi telah dikirim!');

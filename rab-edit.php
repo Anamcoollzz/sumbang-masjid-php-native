@@ -4,9 +4,9 @@
  <?php
  $id_r = $_GET['id'];
  
-$is= mysql_query("select * from rab_isi where id_ri='".$id_r."'  ");
- //$is1= mysql_query("select SUM(total_harga) from rab_isi where id_rs='".$idrs."'  ");
- $isi = mysql_fetch_row($is);
+$is= mysqli_query($koneksi, "select * from rab_isi where id_ri='".$id_r."'  ");
+ //$is1= mysqli_query($koneksi, "select SUM(total_harga) from rab_isi where id_rs='".$idrs."'  ");
+ $isi = mysqli_fetch_row($is);
  
 		$id_rs = $isi[1];
 		$id_r = $isi[0];
@@ -16,8 +16,8 @@ $is= mysql_query("select * from rab_isi where id_ri='".$id_r."'  ");
 		$hrg1 = $isi[5];
 		$spek = $isi[7];
 		$ket	 = $isi[8];
-$d= mysql_query("select * from rab_sub where id_rs='".$id_rs."'  ");
-$don = mysql_fetch_row($d);
+$d= mysqli_query($koneksi, "select * from rab_sub where id_rs='".$id_rs."'  ");
+$don = mysqli_fetch_row($d);
 $ksub=$don[0];
 $nsub=$don[1];
  
@@ -35,8 +35,8 @@ $nsub=$don[1];
  <select name="sub" required>
 <option value="<?php echo $ksub; ?>" selected><?php echo $nsub; ?></option>
 <?php
-$tg_l = mysql_query("select * from rab_sub order by id_rs ASC  ");
-while($tg_l1 = mysql_fetch_row($tg_l))
+$tg_l = mysqli_query($koneksi, "select * from rab_sub order by id_rs ASC  ");
+while($tg_l1 = mysqli_fetch_row($tg_l))
 {
 	$tg_id = $tg_l1[0];
 	$tg_n = $tg_l1[1];
@@ -133,8 +133,8 @@ $spesifik = $_POST['spesifik'];
 $ket = $_POST['ket'];
 $total = $volume*$harga;
 
-	mysql_query("UPDATE rab_isi set id_rs='".$sub."' , pekerjaan='".$kerja."' , satuan='".$satuan."' , volume='".$volume."' , harga_satuan='".$harga."' , total_harga='".$total."' , spesifikasi='".$spesifik."', keterangan='".$ket."' where id_ri='".$idri."' ");
-			//mysql_query("INSERT INTO rab_isi values (0, '$sub','$kerja','$satuan','$volume','$harga','0','$spesifik','$ket')");
+	mysqli_query($koneksi, "UPDATE rab_isi set id_rs='".$sub."' , pekerjaan='".$kerja."' , satuan='".$satuan."' , volume='".$volume."' , harga_satuan='".$harga."' , total_harga='".$total."' , spesifikasi='".$spesifik."', keterangan='".$ket."' where id_ri='".$idri."' ");
+			//mysqli_query($koneksi, "INSERT INTO rab_isi values (0, '$sub','$kerja','$satuan','$volume','$harga','0','$spesifik','$ket')");
 			
 	
 	print("<META HTTP-EQUIV = 'Refresh' Content = '0; URL =haladmin.php?p=rab_l'>");	

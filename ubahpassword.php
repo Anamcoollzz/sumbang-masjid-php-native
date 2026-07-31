@@ -8,7 +8,7 @@
 	$psw=$_POST['psw'];
 	//$pswb=$_GET['pswb'];
 	
-	mysql_query("UPDATE user set password='".$psw."' where iduser='".$id."' ");
+	mysqli_query($koneksi, "UPDATE user set password='".$psw."' where iduser='".$id."' ");
 	
 	echo"<script>";
 		echo"alert('Reset Password Successfully. Password berhasil Di Ubah')";

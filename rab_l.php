@@ -16,9 +16,9 @@
  </tr>
  
  <?php
- $d= mysql_query("select * from rab_sub  ");
+ $d= mysqli_query($koneksi, "select * from rab_sub  ");
 $no=0;
-	while($don = mysql_fetch_row($d))
+	while($don = mysqli_fetch_row($d))
 	{
 		$no++;
 		$idrs = $don[0];
@@ -31,13 +31,13 @@ $no=0;
   <td colspan="7" >&nbsp;&nbsp; <b><?php echo $nm; ?></b></td>
   </tr>
  <?php
- $is= mysql_query("select * from rab_isi where id_rs='".$idrs."'  ");
- $is1= mysql_query("select SUM(total_harga) from rab_isi where id_rs='".$idrs."'  ");
- $is2 = mysql_fetch_row($is1);
+ $is= mysqli_query($koneksi, "select * from rab_isi where id_rs='".$idrs."'  ");
+ $is1= mysqli_query($koneksi, "select SUM(total_harga) from rab_isi where id_rs='".$idrs."'  ");
+ $is2 = mysqli_fetch_row($is1);
  $ttls1 = $is2[0];
  $ttls = number_format($ttls1, 0, ',', '.');
 $noo=0;
-	while($isi = mysql_fetch_row($is))
+	while($isi = mysqli_fetch_row($is))
 	{
 		$noo++;
 		$id_r = $isi[0];

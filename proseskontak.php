@@ -1,14 +1,14 @@
 <?php
 include 'koneksi.php';
 
-$nama = mysql_real_escape_string($_POST['nama']);
-$email = mysql_real_escape_string($_POST['email']);
-$telepon = mysql_real_escape_string($_POST['telepon']);
-$pesan = mysql_real_escape_string($_POST['pesan']);
+$nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
+$email = mysqli_real_escape_string($koneksi, $_POST['email']);
+$telepon = mysqli_real_escape_string($koneksi, $_POST['telepon']);
+$pesan = mysqli_real_escape_string($koneksi, $_POST['pesan']);
 
 $query = "INSERT INTO pesan (nama, email, telepon, pertanyaan) VALUES('$nama', '$email', '$telepon', '$pesan');";
-$result = mysql_query($query);
-if(mysql_affected_rows() > 0){
+$result = mysqli_query($koneksi, $query);
+if(mysqli_affected_rows($koneksi) > 0){
     echo "<script>
             alert('Pesan anda telah terkirim!!!.');
         </script>";

@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
-$nama_material = mysql_real_escape_string($_POST['nama']);
-$harga = mysql_real_escape_string($_POST['harga']);
+$nama_material = mysqli_real_escape_string($koneksi, $_POST['nama']);
+$harga = mysqli_real_escape_string($koneksi, $_POST['harga']);
 
 $target_dir = "../material/";
 $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
@@ -13,9 +13,9 @@ $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 $filename = md5(uniqid()) . '.' . $imageFileType;
 $target_file = $target_dir . $filename;
 $query = "INSERT INTO material(nama_material, harga, gambar) VALUES('$nama_material', '$harga', '$filename')";
-$result = mysql_query($query);
+$result = mysqli_query($koneksi, $query);
 if ($_FILES["gambar"]) {
-    if (mysql_affected_rows() > 0) {
+    if (mysqli_affected_rows($koneksi) > 0) {
         $check = getimagesize($_FILES["gambar"]["tmp_name"]);
         if ($check !== false) {
             $uploadOk = 1;

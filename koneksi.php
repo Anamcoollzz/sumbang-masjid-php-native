@@ -6,6 +6,5 @@ $user = 'root';
 $password = 'root';
 $database = "masjiddb";
 
-mysql_connect($host, $user, $password);
-mysql_select_db($database);
+$koneksi = mysqli_connect($host, $user, $password, $database);
 ?>

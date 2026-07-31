@@ -35,8 +35,8 @@
 						<?php 
 					/*	include "../../koneksi.php";
 						
-						$ttl = mysql_query("SELECT SUM(jumlah) FROM donasi where status='ok'  ");
-						$ttl1 = mysql_fetch_row($ttl);
+						$ttl = mysqli_query($koneksi, "SELECT SUM(jumlah) FROM donasi where status='ok'  ");
+						$ttl1 = mysqli_fetch_row($ttl);
 						
 						$sql   = "SELECT *  FROM browser";
 						$query = mysqli_query( $con, $sql )  or die(mysqli_error());
@@ -44,7 +44,7 @@
 						{
 							$trendbrowser=$temp['browsername'];                     
 							$sql_total   = "SELECT total FROM browser WHERE browsername='$trendbrowser'";        
-							$query_total = mysqli_query($con,$sql_total ) or die(mysql_error());
+							$query_total = mysqli_query($con,$sql_total ) or die(mysqli_error($con));
 							while( $data = mysqli_fetch_array( $query_total ) )
 							{
 								$total = $data['total'];                 

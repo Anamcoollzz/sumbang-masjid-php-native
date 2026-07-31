@@ -1,12 +1,12 @@
 <?php
-$f1= mysql_query("select * from progres_bangun where id_progress=1 ");
-$row1 = mysql_fetch_array($f1);
-$f2= mysql_query("select * from progres_bangun where id_progress=2 ");
-$row2 = mysql_fetch_array($f2);
-$f3= mysql_query("select * from progres_bangun where id_progress=3 ");
-$row3 = mysql_fetch_array($f3);
-$f4= mysql_query("select * from progres_bangun where id_progress=4 ");
-$row4= mysql_fetch_array($f4);
+$f1= mysqli_query($koneksi, "select * from progres_bangun where id_progress=1 ");
+$row1 = mysqli_fetch_array($f1);
+$f2= mysqli_query($koneksi, "select * from progres_bangun where id_progress=2 ");
+$row2 = mysqli_fetch_array($f2);
+$f3= mysqli_query($koneksi, "select * from progres_bangun where id_progress=3 ");
+$row3 = mysqli_fetch_array($f3);
+$f4= mysqli_query($koneksi, "select * from progres_bangun where id_progress=4 ");
+$row4= mysqli_fetch_array($f4);
 
 $dlm = $row1[2];
 $kubah = $row2[2];

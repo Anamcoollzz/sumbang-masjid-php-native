@@ -2,10 +2,10 @@
 
 include '../koneksi.php';
 if (isset($_GET['id'])) {
-    $id = mysql_real_escape_string($_GET['id']);
+    $id = mysqli_real_escape_string($koneksi, $_GET['id']);
     $query = "DELETE FROM material WHERE idmaterial = '$id'";
-    $result = mysql_query($query);
-    if (mysql_affected_rows() > 0) {
+    $result = mysqli_query($koneksi, $query);
+    if (mysqli_affected_rows($koneksi) > 0) {
         echo "<script>
             alert('Material telah dihapus!!!.');
         </script>";

@@ -6,9 +6,9 @@
 <br /><br />
   <?php
 $id_user = $_SESSION['login']['id_user'];
-$tg_l = mysql_query("select * from donasi where id_user='".$id_user."' and status='pending'  ");
-$tg_l1 = mysql_fetch_row($tg_l);
-$cek = mysql_num_rows($tg_l);
+$tg_l = mysqli_query($koneksi, "select * from donasi where id_user='".$id_user."' and status='pending'  ");
+$tg_l1 = mysqli_fetch_row($tg_l);
+$cek = mysqli_num_rows($tg_l);
 
 if($cek >= 1)
 		{
@@ -42,8 +42,8 @@ if($cek >= 1)
 <option value="bni">Transfer BNI</option>
 <option value="mandiri">Transfer Mandiri</option>
 <?php
-/*$tg_l = mysql_query("select * from rab_sub order by id_rs ASC  ");
-while($tg_l1 = mysql_fetch_row($tg_l))
+/*$tg_l = mysqli_query($koneksi, "select * from rab_sub order by id_rs ASC  ");
+while($tg_l1 = mysqli_fetch_row($tg_l))
 {
 	$tg_id = $tg_l1[0];
 	$tg_n = $tg_l1[1];
@@ -77,7 +77,7 @@ echo "<option value=$tg_id>$tg_n</option>";
 		$jml= str_replace(".", "", $jml1);
 		
 	
-			mysql_query("INSERT INTO donasi values (0,'$idu','$jml','pending')");
+			mysqli_query($koneksi, "INSERT INTO donasi values (0,'$idu','$jml','pending')");
 			
 
 		echo "<script>

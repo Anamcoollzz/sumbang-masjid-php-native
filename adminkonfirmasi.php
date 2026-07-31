@@ -3,8 +3,8 @@
   
  <?php
  
- $ttl = mysql_query("SELECT SUM(jumlah) FROM donasi where status='ok'  ");
- $ttl1 = mysql_fetch_row($ttl)
+ $ttl = mysqli_query($koneksi, "SELECT SUM(jumlah) FROM donasi where status='ok'  ");
+ $ttl1 = mysqli_fetch_row($ttl)
  ?>
  
  
@@ -21,9 +21,9 @@
    <td width="25%" height="30" align="center"><b>Action </b></td>
  </tr>
  <?php
- $d= mysql_query("select * from donasi where status='menunggu' ");
+ $d= mysqli_query($koneksi, "select * from donasi where status='menunggu' ");
 $no=0;
-	while($don = mysql_fetch_row($d))
+	while($don = mysqli_fetch_row($d))
 	{
 		$no++;
 	$id_d = $don[0];
@@ -32,11 +32,11 @@ $no=0;
 	$bank = $don[3];
 	$jml = number_format($jml1, 0, ',', '.');
 	
-	$u = mysql_query("select * from user where iduser='".$nm1."'  ");
-	$us = mysql_fetch_row($u);
+	$u = mysqli_query($koneksi, "select * from user where iduser='".$nm1."'  ");
+	$us = mysqli_fetch_row($u);
 	
-	$k = mysql_query("select * from konfirmasi where id_donasi='".$id_d."'  ");
-	$ko = mysql_fetch_row($k);
+	$k = mysqli_query($koneksi, "select * from konfirmasi where id_donasi='".$id_d."'  ");
+	$ko = mysqli_fetch_row($k);
 	
 	$nm = $us[3];
 	$tgl = $ko[1];

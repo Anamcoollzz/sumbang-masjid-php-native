@@ -4,11 +4,11 @@ session_start();
 $act = $_GET['act'];
 if ($act == 'add') {
     if (isset($_GET['id'])) {
-        $id = mysql_real_escape_string($_GET['id']);
+        $id = mysqli_real_escape_string($koneksi, $_GET['id']);
         $query = "SELECT * FROM material WHERE idmaterial='$id';";
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) > 0) {
-            $r = mysql_fetch_array($result);
+        $result = mysqli_query($koneksi, $query);
+        if (mysqli_num_rows($result) > 0) {
+            $r = mysqli_fetch_array($result);
             $_SESSION['cart'][$r['idmaterial']] += 1;
             header("Location: cart.php");
         } else {

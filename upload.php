@@ -2,9 +2,9 @@
 
 include 'koneksi.php';
 
-$nama = mysql_real_escape_string($_POST['nama']);
-$email = mysql_real_escape_string($_POST['email']);
-$telepon = mysql_real_escape_string($_POST['telepon']);
+$nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
+$email = mysqli_real_escape_string($koneksi, $_POST['email']);
+$telepon = mysqli_real_escape_string($koneksi, $_POST['telepon']);
 
 $target_dir = "konfirm/";
 $target_file = $target_dir . basename($_FILES["bukti"]["name"]);
@@ -16,9 +16,9 @@ $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 $filename = md5(uniqid()) . '.' . $imageFileType;
 $target_file = $target_dir . $filename;
 $query = "INSERT INTO konfirmasi(nama, email, telepon, struk) VALUES('$nama', '$email', '$telepon', '$filename')";
-$result = mysql_query($query);
+$result = mysqli_query($koneksi, $query);
 if ($_FILES["bukti"]) {
-    if (mysql_affected_rows() > 0) {
+    if (mysqli_affected_rows($koneksi) > 0) {
         $check = getimagesize($_FILES["bukti"]["tmp_name"]);
         if ($check !== false) {
             $uploadOk = 1;

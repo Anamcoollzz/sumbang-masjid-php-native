@@ -29,7 +29,7 @@
 	$subt = $_POST['subt'];
 
 	
-			mysql_query("INSERT INTO rab_sub values (0, '$subt','0')");
+			mysqli_query($koneksi, "INSERT INTO rab_sub values (0, '$subt','0')");
 			
 	
 	print("<META HTTP-EQUIV = 'Refresh' Content = '0; URL =haladmin.php?p=rab'>");	

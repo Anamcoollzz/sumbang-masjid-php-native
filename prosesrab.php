@@ -8,7 +8,7 @@
 	//$act=$_GET['act'];
 	$id=$_GET['id'];
 	
-	mysql_query("DELETE FROM rab_isi WHERE id_ri='".$id."'");
+	mysqli_query($koneksi, "DELETE FROM rab_isi WHERE id_ri='".$id."'");
 	
 	
 	

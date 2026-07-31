@@ -88,7 +88,7 @@ if ($p==1)
  
  <?php
  
- $cek_username=mysql_num_rows(mysql_query("SELECT username FROM user WHERE username='$_POST[usr]'"));
+ $cek_username=mysqli_num_rows(mysqli_query($koneksi, "SELECT username FROM user WHERE username='$_POST[usr]'"));
 // Kalau username sudah ada yang pakai
 if ($cek_username > 0){
 			echo "<script>
@@ -105,7 +105,7 @@ if ($cek_username > 0){
 	$psw = $_POST['psw'];
 
 	
-			mysql_query("INSERT INTO user values (0,'$usr','$psw','$nm','$email','$tlp','user')");
+			mysqli_query($koneksi, "INSERT INTO user values (0,'$usr','$psw','$nm','$email','$tlp','user')");
 			
 	/*echo "<script>
                 alert('Data Admin berhasil disimpan');

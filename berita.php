@@ -41,7 +41,7 @@
 	$today = date("Y-m-d H:i:s"); 
 
 	
-			mysql_query("INSERT INTO berita values (0,'$jdl','$isi','$today')");
+			mysqli_query($koneksi, "INSERT INTO berita values (0,'$jdl','$isi','$today')");
 			
 	echo "<script>
                 alert('Data Berita Berhasil Disimpan');
@@ -65,8 +65,8 @@
  
  <?php
  
- $ttl = mysql_query("SELECT SUM(jumlah) FROM donasi where status='ok'  ");
- $ttl1 = mysql_fetch_row($ttl)
+ $ttl = mysqli_query($koneksi, "SELECT SUM(jumlah) FROM donasi where status='ok'  ");
+ $ttl1 = mysqli_fetch_row($ttl)
  ?>
  
  
@@ -81,9 +81,9 @@
    <td width="15%" height="30" align="center"><b>Action </b></td>
  </tr>
  <?php
- $d= mysql_query("select * from berita ");
+ $d= mysqli_query($koneksi, "select * from berita ");
 $no=0;
-	while($don = mysql_fetch_row($d))
+	while($don = mysqli_fetch_row($d))
 	{
 		$no++;
 	$id_d = $don[0];

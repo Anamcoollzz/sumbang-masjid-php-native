@@ -10,7 +10,7 @@
 	
 	if($act==1)
 		{
-		mysql_query("UPDATE donasi set status='ok' where id_donasi='".$id."' ");
+		mysqli_query($koneksi, "UPDATE donasi set status='ok' where id_donasi='".$id."' ");
 	
 	echo"<script>";
 		echo"alert('Konfirmasi Berhasil')";
@@ -19,7 +19,7 @@
 		}
 	else if($act==2)
 		{
-			mysql_query("UPDATE donasi set status='pending' where id_donasi='".$id."' ");
+			mysqli_query($koneksi, "UPDATE donasi set status='pending' where id_donasi='".$id."' ");
 	
 	echo"<script>";
 		echo"alert('Data di Reject')";

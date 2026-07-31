@@ -2,13 +2,13 @@
 
 include '../koneksi.php';
 
-$judul = mysql_real_escape_string($_POST['judul']);
-$teks = mysql_real_escape_string($_POST['teks']);
+$judul = mysqli_real_escape_string($koneksi, $_POST['judul']);
+$teks = mysqli_real_escape_string($koneksi, $_POST['teks']);
 
 $query = "INSERT INTO berita(judul, teks) VALUES('$judul', '$teks');";
-$result = mysql_query($query);
+$result = mysqli_query($koneksi, $query);
 
-if (mysql_affected_rows() > 0) {
+if (mysqli_affected_rows($koneksi) > 0) {
     echo "<script>
                 alert('Berita telah ditambahkan!');
             </script>";

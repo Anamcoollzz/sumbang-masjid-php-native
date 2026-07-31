@@ -30,14 +30,14 @@
 
                                     <div class="bd-postcontent bd-postcontent-0 clearfix">
                                         <?php $query = "SELECT * FROM material"; ?>
-                                        <?php $result = mysql_query($query); ?>
-                                        <?php if (mysql_num_rows($result) > 0): ?>
+                                        <?php $result = mysqli_query($koneksi, $query); ?>
+                                        <?php if (mysqli_num_rows($result) > 0): ?>
                                             <table class="bd-article" style="width: 100%; ">
                                                 <tbody>
                                                     <tr>
                                                         <?php $i = 0; ?>
                                                         <?php $limit = 4; ?>
-                                                        <?php while ($r = mysql_fetch_array($result)): ?>
+                                                        <?php while ($r = mysqli_fetch_array($result)): ?>
                                                         <td style="text-align: center; width: 20%; "><img alt="" style="width: 150px;" class="bd-lightbox" src="material/<?php echo $r['gambar']; ?>"><br><b><?php echo $r['nama_material']; ?></b><br>Rp.<?php echo number_format($r['harga']); ?>,-<br><a href="belimaterial.php?act=add&id=<?php echo $r['idmaterial']; ?>" class="bd-button">Sumbang</a></td>
                                                         <?php $i++; ?>
                                                         <?php if($i % $limit == 0): ?>

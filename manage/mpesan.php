@@ -31,8 +31,8 @@
                                             <div class="bd-content-layout-row">
                                                 <div class="bd-layout-cell" style="width: 100%" >
                                                     <?php $query = "SELECT * FROM pesan;";
-                                                    $result = mysql_query($query);
-                                                    if(mysql_num_rows($result) > 0):
+                                                    $result = mysqli_query($koneksi, $query);
+                                                    if(mysqli_num_rows($result) > 0):
                                                     ?>
                                                     <table style="width: 100%">
                                                         <tr>
@@ -43,7 +43,7 @@
                                                             <th colspan="2">Kelola</th>
                                                         </tr>
                                                         <?php $i = 1; ?>
-                                                        <?php while($r = mysql_fetch_array($result)): ?>
+                                                        <?php while($r = mysqli_fetch_array($result)): ?>
                                                         <tr>
                                                             <td><?php echo $i; ?></td>
                                                             <td><?php echo $r['nama']; ?></td>
